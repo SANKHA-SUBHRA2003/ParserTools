@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parser Landing Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .fade-up {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeUp 0.6s forwards;
+      }
+      @keyframes fadeUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body
+    class="bg-gradient-to-r from-blue-50 to-green-50 text-gray-800 flex flex-col justify-center items-center"
+  >
+    <!-- Hero Section -->
+    <section
+      class="relative min-h-screen flex items-center justify-center overflow-hidden px-6 w-full"
+    >
+      <!-- animated blurred background blobs -->
+      <div
+        class="absolute top-[-20%] left-[-10%] w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob"
+      ></div>
+      <div
+        class="absolute top-[60%] right-[-15%] w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob animation-delay-2000"
+      ></div>
+
+      <div
+        class="relative z-10 flex flex-col md:flex-row items-center text-center md:text-left max-w-6xl w-full space-y-8 md:space-y-0 md:space-x-12"
+      >
+        <!-- Text Content -->
+        <div class="md:w-1/2 fade-up">
+          <h1
+            class="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 mb-4 py-5"
+          >
+            Master SLR, LALR & Predictive Parsing
+          </h1>
+          <p class="text-lg text-gray-700 mb-6">
+            Dive deep into grammar analysis with live demos, interactive
+            parse‐tree visualizations, and hands‐on code snippets. Build your
+            compiler skills today!
+          </p>
+          <a
+            href="#parsers"
+            class="inline-block bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white py-3 px-6 rounded-2xl text-lg transition"
+          >
+            Get Started
+          </a>
+        </div>
+        <!-- Code Snippet Preview -->
+        <div class="md:w-1/2 fade-up">
+          <div
+            class="bg-gray-900 text-gray-100 font-mono p-6 rounded-2xl shadow-xl overflow-auto"
+          >
+            <pre class="language-bnf">
+  <code>
+  &lt;expr&gt;   ::= &lt;term&gt; (( '+' | '-' ) &lt;term&gt;)*
+  &lt;term&gt;   ::= &lt;factor&gt; (( '' | '/' ) &lt;factor&gt;)
+  &lt;factor&gt; ::= '(' &lt;expr&gt; ')' | &lt;number&gt;
+  &lt;number&gt; ::= [0-9]+
+  </code>
+          </pre>
+          </div>
+        </div>
+      </div>
+
+      <style>
+        /* blob animation */
+        @keyframes blob {
+          0%,
+          100% {
+            transform: translate(0, 0) scale(1);
+          }
+          33% {
+            transform: translate(30px, -50px) scale(1.1);
+          }
+          66% {
+            transform: translate(-20px, 20px) scale(0.9);
+          }
+        }
+        .animate-blob {
+          animation: blob 8s infinite;
+        }
+        .animation-delay-2000 {
+          animation-delay: 2s;
+        }
+      </style>
+    </section>
+
+    <!-- Parsers Section -->
+    <section id="parsers" class="max-w-6xl mx-auto py-20 px-6 space-y-16">
+      <!-- Header -->
+      <div class="text-center fade-up">
+        <h2 class="text-4xl font-bold mb-4">Choose Your Parser</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          Explore and analyze using Predictive, SLR, and LALR parsers.
+        </p>
+      </div>
+
+      <!-- Cards -->
+      <div
+        class="grid gap-8 md:grid-cols-3 fade-up"
+        style="animation-delay: 0.2s"
+      >
+        <!-- Predictive Card -->
+        <div
+          class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition transform hover:-translate-y-1"
+        >
+          <h3 class="text-2xl font-semibold text-purple-700 mb-3">
+            Predictive Parser
+          </h3>
+          <p class="text-gray-600 mb-6">
+            Top-down parser using FIRST and FOLLOW sets. Builds parse table to
+            predict next steps without backtracking.
+          </p>
+          <a
+            href="./Predictive/index.html"
+            class="inline-block bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded-xl transition"
+          >
+            Analyze with Predictive
+          </a>
+        </div>
+
+        <!-- SLR Card -->
+        <div
+          class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition transform hover:-translate-y-1"
+        >
+          <h3 class="text-2xl font-semibold text-blue-700 mb-3">SLR Parser</h3>
+          <p class="text-gray-600 mb-6">
+            Simple LR parser using LR(0) items and follow sets. Easier to
+            implement but less powerful for certain grammars.
+          </p>
+          <a
+            href="./SLR/slr.html"
+            class="inline-block bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-xl transition"
+          >
+            Analyze with SLR
+          </a>
+        </div>
+
+        <!-- LALR Card -->
+        <div
+          class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition transform hover:-translate-y-1"
+        >
+          <h3 class="text-2xl font-semibold text-green-700 mb-3">
+            LALR Parser
+          </h3>
+          <p class="text-gray-600 mb-6">
+            Look-Ahead LR parser that merges states. More powerful and commonly
+            used in compiler tools like YACC.
+          </p>
+          <a
+            href="/LALR/index.html"
+            class="inline-block bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-xl transition"
+          >
+            Analyze with LALR
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="bg-white py-20 px-6 fade-up w-full md:w-[70vw] rounded-2xl">
+      <div class="max-w-6xl mx-auto text-center mb-12">
+        <h2 class="text-4xl font-bold mb-4">
+          Parser Comparison: Predictive vs SLR vs LALR
+        </h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          See how top-down and bottom-up parsers differ in power, complexity,
+          and usage.
+        </p>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="min-w-full table-auto border-collapse">
+          <thead>
+            <tr class="bg-gray-100 text-left">
+              <th class="py-4 px-6">Feature</th>
+              <th class="py-4 px-6 text-purple-700">Predictive</th>
+              <th class="py-4 px-6 text-blue-700">SLR</th>
+              <th class="py-4 px-6 text-green-700">LALR</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-700">
+            <tr class="border-t">
+              <td class="py-4 px-6 font-medium">Parsing Method</td>
+              <td class="py-4 px-6">Top-down</td>
+              <td class="py-4 px-6">Bottom-up</td>
+              <td class="py-4 px-6">Bottom-up</td>
+            </tr>
+            <tr class="border-t">
+              <td class="py-4 px-6 font-medium">Power</td>
+              <td class="py-4 px-6">Less powerful (LL(1) grammars only)</td>
+              <td class="py-4 px-6">More powerful</td>
+              <td class="py-4 px-6">Most powerful</td>
+            </tr>
+            <tr class="border-t">
+              <td class="py-4 px-6 font-medium">Uses</td>
+              <td class="py-4 px-6">Simple grammar checks</td>
+              <td class="py-4 px-6">Educational parsers</td>
+              <td class="py-4 px-6">Production compilers (YACC)</td>
+            </tr>
+            <tr class="border-t">
+              <td class="py-4 px-6 font-medium">Implementation</td>
+              <td class="py-4 px-6">Simplest (table-driven)</td>
+              <td class="py-4 px-6">Moderate</td>
+              <td class="py-4 px-6">Slightly complex</td>
+            </tr>
+            <tr class="border-t">
+              <td class="py-4 px-6 font-medium">Backtracking</td>
+              <td class="py-4 px-6">No backtracking (predictive)</td>
+              <td class="py-4 px-6">Handles shifts & reduces</td>
+              <td class="py-4 px-6">
+                Handles shifts & reduces with look-ahead
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer class="relative bg-gradient-to-r from-green-50 to-blue-50 text-gray-800 py-12 mt-16 w-full overflow-hidden fade-up">
+        <!-- decorative blobs -->
+        <div class="absolute bottom-[-10%] left-[-10%] w-80 h-80 bg-purple-300 rounded-full mix-blend-multiply filter blur-2xl opacity-50 animate-blob"></div>
+        <div class="absolute top-[-15%] right-[-10%] w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-2xl opacity-50 animate-blob animation-delay-2000"></div>
+      
+        <div class="relative z-10 max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Column 1: About -->
+          <div>
+            <h4 class="text-xl font-bold mb-4">About</h4>
+            <p class="text-gray-600">
+              Master the art of grammar parsing with our interactive SLR, LALR &amp; Predictive tools. Build better compilers, faster!
+            </p>
+          </div>
+          <!-- Column 2: Quick Links -->
+          <div>
+            <h4 class="text-xl font-bold mb-4">Quick Links</h4>
+            <ul class="space-y-2 text-gray-600">
+              <li><a href="#parsers" class="hover:text-blue-600 transition">Parsers</a></li>
+              <li><a href="./SLR/slr.html" class="hover:text-blue-600 transition">SLR Analyzer</a></li>
+              <li><a href="./LALR/index.html" class="hover:text-green-600 transition">LALR Analyzer</a></li>
+              <li><a href="./Predictive/index.html" class="hover:text-purple-600 transition">Predictive Analyzer</a></li>
+            </ul>
+          </div>
+          <!-- Column 3: Created By -->
+          <div>
+            <h4 class="text-xl font-bold mb-4">Created By</h4>
+            <ul class="space-y-2 text-gray-600">
+              <li><a href="https://www.linkedin.com/in/sankha-subhra-ghosh-566241231/" target="_blank" class="hover:text-blue-600 transition">Sankha Subhra Ghosh</a></li>
+              <li><a href="https://in.linkedin.com/in/vaibhavraj-exe" target="_blank" class="hover:text-blue-600 transition">Vaibhav Raj</a></li>
+              <li><a href="https://www.linkedin.com/in/nihal-sivapuram-0b9054250/" target="_blank" class="hover:text-blue-600 transition">Nihal Sivapuram</a></li>
+            </ul>
+          </div>
+        </div>
+      
+        <div class="relative z-10 mt-8 border-t border-gray-200 pt-6 text-center text-gray-500 text-sm">
+          &copy; 2025 ParserTools. All rights reserved.
+        </div>
+      </footer>
+  </body>
+</html>
